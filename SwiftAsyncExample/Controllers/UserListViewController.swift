@@ -17,6 +17,18 @@ class ViewController: UIViewController {
         self.title = "SwiftAsyncExample"
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        self.start()
+    }
+    
+    func start() {
+        let api = ApiManager()
+        let url = URL(string: BASE_URL + API_URL + UserApi.all.rawValue)!
+        api.request(param: nil, url: url) { (success, result, error) in
+            guard success else { return }
+            let result = result as! NSDictionary
+            print(result)
+        }
     }
 
 }

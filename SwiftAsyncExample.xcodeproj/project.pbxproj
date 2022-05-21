@@ -15,6 +15,8 @@
 		AE884F5F28388B3E005C195F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE884F5D28388B3E005C195F /* LaunchScreen.storyboard */; };
 		AE884F672838A5A4005C195F /* UserListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE884F662838A5A4005C195F /* UserListTableViewCell.swift */; };
 		AE884F692838A9E7005C195F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE884F682838A9E7005C195F /* User.swift */; };
+		AE884F6F2838AD37005C195F /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE884F6E2838AD37005C195F /* ApiManager.swift */; };
+		AE884F722838DB7B005C195F /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE884F712838DB7B005C195F /* Config.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		AE884F6028388B3E005C195F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE884F662838A5A4005C195F /* UserListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListTableViewCell.swift; sourceTree = "<group>"; };
 		AE884F682838A9E7005C195F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		AE884F6E2838AD37005C195F /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		AE884F712838DB7B005C195F /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,12 +64,14 @@
 		AE884F5128388B3B005C195F /* SwiftAsyncExample */ = {
 			isa = PBXGroup;
 			children = (
+				AE884F702838C359005C195F /* Manager */,
 				AE884F6A2838A9EF005C195F /* Models */,
 				AE884F6B2838A9F5005C195F /* Controllers */,
 				AE884F6C2838AA0A005C195F /* Resources */,
 				AE884F6D2838AA1A005C195F /* Views */,
 				AE884F5228388B3B005C195F /* AppDelegate.swift */,
 				AE884F5428388B3B005C195F /* SceneDelegate.swift */,
+				AE884F712838DB7B005C195F /* Config.swift */,
 				AE884F5B28388B3E005C195F /* Assets.xcassets */,
 				AE884F5D28388B3E005C195F /* LaunchScreen.storyboard */,
 				AE884F6028388B3E005C195F /* Info.plist */,
@@ -103,6 +109,14 @@
 				AE884F5828388B3B005C195F /* Main.storyboard */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		AE884F702838C359005C195F /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				AE884F6E2838AD37005C195F /* ApiManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,7 +193,9 @@
 				AE884F672838A5A4005C195F /* UserListTableViewCell.swift in Sources */,
 				AE884F5728388B3B005C195F /* UserListViewController.swift in Sources */,
 				AE884F5328388B3B005C195F /* AppDelegate.swift in Sources */,
+				AE884F722838DB7B005C195F /* Config.swift in Sources */,
 				AE884F692838A9E7005C195F /* User.swift in Sources */,
+				AE884F6F2838AD37005C195F /* ApiManager.swift in Sources */,
 				AE884F5528388B3B005C195F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
