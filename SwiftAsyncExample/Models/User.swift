@@ -13,6 +13,8 @@ class User {
     var name: String
     var commnet: String
     
+    typealias Json = Dictionary<String, Any?>
+    
     init(
         userId: Int,
         name: String,
@@ -23,4 +25,20 @@ class User {
         self.commnet = comment
     }
     
+    static func fromJson(user: Json) -> User {
+        return .init(
+            userId: user[Key.userId.rawValue] as? Int ?? 0,
+            name: user[Key.name.rawValue] as? String ?? "",
+            comment: user[Key.comment.rawValue] as? String ?? ""
+        )
+    }
+    
+}
+
+extension User {
+    enum Key: String, CaseIterable {
+        case userId = "user_id"
+        case name = "name"
+        case comment = "comment"
+    }
 }

@@ -7,10 +7,10 @@
 
 import Foundation
 
-let BASE_URL = "http//localhost:8888"
-let API_URL = "/api"
+let BASE_URL = "http://localhost:8888/"
+let API_URL = "api/"
     
 enum UserApi: String {
-    case store = "store"
-    case all = "all"
+    case store = "user/store"
+    case all = "user/all"
 }

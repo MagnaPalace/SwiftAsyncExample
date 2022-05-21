@@ -11,6 +11,8 @@ class ViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
     
+    var viewModel: UserListViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -18,17 +20,8 @@ class ViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        self.start()
-    }
-    
-    func start() {
-        let api = ApiManager()
-        let url = URL(string: BASE_URL + API_URL + UserApi.all.rawValue)!
-        api.request(param: nil, url: url) { (success, result, error) in
-            guard success else { return }
-            let result = result as! NSDictionary
-            print(result)
-        }
+        self.viewModel = UserListViewModel(delegate: self)
+        self.viewModel.fetchUsers()
     }
 
 }
@@ -38,14 +31,27 @@ extension ViewController: UITableViewDelegate {
 }
 
 extension ViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return self.viewModel.usersCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "UserListTableViewCell") as? UserListTableViewCell
+        cell?.userIdLabel.text = self.viewModel.users(row: indexPath.row).userId.description
+        cell?.nameLabel.text = self.viewModel.users(row: indexPath.row).name
+        cell?.commentLabel.text = self.viewModel.users(row: indexPath.row).commnet
         return cell!
     }
     
+}
+
+extension ViewController: UserListViewModelDelegate {
+    
+    func dataUpdated() {
+        DispatchQueue.main.async{
+            self.tableView.reloadData()
+        }
+    }
     
 }

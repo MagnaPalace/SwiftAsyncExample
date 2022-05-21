@@ -17,6 +17,7 @@
 		AE884F692838A9E7005C195F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE884F682838A9E7005C195F /* User.swift */; };
 		AE884F6F2838AD37005C195F /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE884F6E2838AD37005C195F /* ApiManager.swift */; };
 		AE884F722838DB7B005C195F /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE884F712838DB7B005C195F /* Config.swift */; };
+		AE884F75283997DE005C195F /* UserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE884F74283997DE005C195F /* UserListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		AE884F682838A9E7005C195F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AE884F6E2838AD37005C195F /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		AE884F712838DB7B005C195F /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		AE884F74283997DE005C195F /* UserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 		AE884F5128388B3B005C195F /* SwiftAsyncExample */ = {
 			isa = PBXGroup;
 			children = (
+				AE884F73283997C9005C195F /* ViewModels */,
 				AE884F702838C359005C195F /* Manager */,
 				AE884F6A2838A9EF005C195F /* Models */,
 				AE884F6B2838A9F5005C195F /* Controllers */,
@@ -117,6 +120,14 @@
 				AE884F6E2838AD37005C195F /* ApiManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		AE884F73283997C9005C195F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				AE884F74283997DE005C195F /* UserListViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,6 +202,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE884F672838A5A4005C195F /* UserListTableViewCell.swift in Sources */,
+				AE884F75283997DE005C195F /* UserListViewModel.swift in Sources */,
 				AE884F5728388B3B005C195F /* UserListViewController.swift in Sources */,
 				AE884F5328388B3B005C195F /* AppDelegate.swift in Sources */,
 				AE884F722838DB7B005C195F /* Config.swift in Sources */,
