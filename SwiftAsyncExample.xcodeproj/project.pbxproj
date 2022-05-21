@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		AE884F5328388B3B005C195F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE884F5228388B3B005C195F /* AppDelegate.swift */; };
 		AE884F5528388B3B005C195F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE884F5428388B3B005C195F /* SceneDelegate.swift */; };
-		AE884F5728388B3B005C195F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE884F5628388B3B005C195F /* ViewController.swift */; };
+		AE884F5728388B3B005C195F /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE884F5628388B3B005C195F /* UserListViewController.swift */; };
 		AE884F5A28388B3B005C195F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE884F5828388B3B005C195F /* Main.storyboard */; };
 		AE884F5C28388B3E005C195F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE884F5B28388B3E005C195F /* Assets.xcassets */; };
 		AE884F5F28388B3E005C195F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE884F5D28388B3E005C195F /* LaunchScreen.storyboard */; };
+		AE884F672838A5A4005C195F /* UserListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE884F662838A5A4005C195F /* UserListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AE884F4F28388B3B005C195F /* SwiftAsyncExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftAsyncExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE884F5228388B3B005C195F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE884F5428388B3B005C195F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AE884F5628388B3B005C195F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AE884F5628388B3B005C195F /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		AE884F5928388B3B005C195F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AE884F5B28388B3E005C195F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE884F5E28388B3E005C195F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AE884F6028388B3E005C195F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE884F662838A5A4005C195F /* UserListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +60,8 @@
 			children = (
 				AE884F5228388B3B005C195F /* AppDelegate.swift */,
 				AE884F5428388B3B005C195F /* SceneDelegate.swift */,
-				AE884F5628388B3B005C195F /* ViewController.swift */,
+				AE884F5628388B3B005C195F /* UserListViewController.swift */,
+				AE884F662838A5A4005C195F /* UserListTableViewCell.swift */,
 				AE884F5828388B3B005C195F /* Main.storyboard */,
 				AE884F5B28388B3E005C195F /* Assets.xcassets */,
 				AE884F5D28388B3E005C195F /* LaunchScreen.storyboard */,
@@ -138,7 +141,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE884F5728388B3B005C195F /* ViewController.swift in Sources */,
+				AE884F672838A5A4005C195F /* UserListTableViewCell.swift in Sources */,
+				AE884F5728388B3B005C195F /* UserListViewController.swift in Sources */,
 				AE884F5328388B3B005C195F /* AppDelegate.swift in Sources */,
 				AE884F5528388B3B005C195F /* SceneDelegate.swift in Sources */,
 			);
