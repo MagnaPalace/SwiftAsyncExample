@@ -37,4 +37,32 @@ class ApiManager {
         task.resume()
     }
     
+    /// Swift 5.5 Concurrency async/await
+    func requestAsync(param: [String: Any]?, url: URL) async throws -> Any? {
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        do {
+            print("-----url-----\n\(url)")
+            print("-----param-----\n\(String(describing: param))")
+            let (data, urlResponse) = try await URLSession.shared.data(for: request, delegate: nil)
+            
+            guard let httpStatus = urlResponse as? HTTPURLResponse else {
+                return ""
+            }
+            guard httpStatus.statusCode == 200 else {
+                return ""
+            }
+            print("statusCode: \(httpStatus.statusCode)")
+            do {
+                let result = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                print("-----result-----\n\(result)")
+                return result
+            } catch {
+                return ""
+            }
+        } catch {
+            return ""
+        }
+    }
+    
 }

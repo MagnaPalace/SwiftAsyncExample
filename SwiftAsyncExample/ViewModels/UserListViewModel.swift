@@ -22,16 +22,30 @@ class UserListViewModel {
         let api = ApiManager()
         let url = URL(string: BASE_URL + API_URL + UserApi.all.rawValue)!
         IndicatorView.shared.startIndicator()
-        api.request(param: nil, url: url) { (success, result, error) in
-            guard success, let json = (result as AnyObject)["users"] as? [User.Json], json.count > 0 else {
+        
+        // 通常版リクエスト
+//        api.request(param: nil, url: url) { (success, result, error) in
+//            guard success, let json = (result as AnyObject)["users"] as? [User.Json], json.count > 0 else {
+//                IndicatorView.shared.stopIndicator()
+//                return
+//            }
+//            IndicatorView.shared.stopIndicator()
+//            self.users = json.map { User.fromJson(user: $0) }
+//            self.delegate.dataUpdated()
+//        }
+        
+        // Swift 5.5 Concurrency async/await
+        Task {
+            let result = try await api.requestAsync(param: nil, url: url)
+            guard let json = (result as AnyObject)["users"] as? [User.Json], json.count > 0 else {
                 IndicatorView.shared.stopIndicator()
                 return
             }
             IndicatorView.shared.stopIndicator()
             self.users = json.map { User.fromJson(user: $0) }
-            print(self.users)
             self.delegate.dataUpdated()
         }
+        
     }
     
     func usersCount() -> Int {
