@@ -10,7 +10,7 @@ import Foundation
 
 class ApiManager {
     
-    // 通常版
+    /// 通常版
     func request(param: [String: Any]?, url: URL, completion: @escaping (_ success: Bool, _ result: Any?, _ error: NSError?) -> ()) {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
