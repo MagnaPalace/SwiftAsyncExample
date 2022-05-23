@@ -19,6 +19,8 @@
 		AE884F722838DB7B005C195F /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE884F712838DB7B005C195F /* Config.swift */; };
 		AE884F75283997DE005C195F /* UserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE884F74283997DE005C195F /* UserListViewModel.swift */; };
 		AE884F772839CFF1005C195F /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE884F762839CFF1005C195F /* IndicatorView.swift */; };
+		AE884F79283BA3EE005C195F /* AddUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE884F78283BA3EE005C195F /* AddUserViewController.swift */; };
+		AE884F7B283BA3FF005C195F /* AddUserViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE884F7A283BA3FF005C195F /* AddUserViewController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		AE884F712838DB7B005C195F /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		AE884F74283997DE005C195F /* UserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewModel.swift; sourceTree = "<group>"; };
 		AE884F762839CFF1005C195F /* IndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
+		AE884F78283BA3EE005C195F /* AddUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewController.swift; sourceTree = "<group>"; };
+		AE884F7A283BA3FF005C195F /* AddUserViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddUserViewController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				AE884F5628388B3B005C195F /* UserListViewController.swift */,
+				AE884F78283BA3EE005C195F /* AddUserViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -113,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				AE884F5828388B3B005C195F /* Main.storyboard */,
+				AE884F7A283BA3FF005C195F /* AddUserViewController.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -191,6 +197,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE884F7B283BA3FF005C195F /* AddUserViewController.storyboard in Resources */,
 				AE884F5F28388B3E005C195F /* LaunchScreen.storyboard in Resources */,
 				AE884F5C28388B3E005C195F /* Assets.xcassets in Resources */,
 				AE884F5A28388B3B005C195F /* Main.storyboard in Resources */,
@@ -209,6 +216,7 @@
 				AE884F5728388B3B005C195F /* UserListViewController.swift in Sources */,
 				AE884F5328388B3B005C195F /* AppDelegate.swift in Sources */,
 				AE884F772839CFF1005C195F /* IndicatorView.swift in Sources */,
+				AE884F79283BA3EE005C195F /* AddUserViewController.swift in Sources */,
 				AE884F722838DB7B005C195F /* Config.swift in Sources */,
 				AE884F692838A9E7005C195F /* User.swift in Sources */,
 				AE884F6F2838AD37005C195F /* ApiManager.swift in Sources */,

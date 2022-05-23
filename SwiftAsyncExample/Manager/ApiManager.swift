@@ -47,21 +47,24 @@ class ApiManager {
             let (data, urlResponse) = try await URLSession.shared.data(for: request, delegate: nil)
             
             guard let httpStatus = urlResponse as? HTTPURLResponse else {
-                return ""
-            }
-            guard httpStatus.statusCode == 200 else {
-                return ""
+                return nil
             }
             print("statusCode: \(httpStatus.statusCode)")
+            guard httpStatus.statusCode == 200 else {
+                return nil
+            }
+            
             do {
                 let result = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                 print("-----result-----\n\(result)")
                 return result
             } catch {
-                return ""
+                print(error)
+                return nil
             }
         } catch {
-            return ""
+            print(error)
+            return nil
         }
     }
     

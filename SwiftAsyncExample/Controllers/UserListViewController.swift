@@ -20,8 +20,22 @@ class ViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
+        self.setNavigationBar()
+        
         self.viewModel = UserListViewModel(delegate: self)
         self.viewModel.fetchUsers()
+    }
+    
+    private func setNavigationBar() {
+        self.navigationController?.navigationBar.tintColor = .white
+        let addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addBarButtonTapped(_:)))
+        self.navigationItem.rightBarButtonItem = addBarButton
+    }
+    
+    @objc func addBarButtonTapped(_ sender: UIBarButtonItem) {
+        let storyboard = UIStoryboard(name: "AddUserViewController", bundle: nil)
+        let addUserViewController = storyboard.instantiateViewController(withIdentifier: "AddUserViewController") as! AddUserViewController
+        self.navigationController?.pushViewController(addUserViewController, animated: true)
     }
 
 }
