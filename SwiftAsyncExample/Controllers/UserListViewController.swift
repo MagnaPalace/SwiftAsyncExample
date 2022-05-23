@@ -51,10 +51,9 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let user = self.viewModel.users(row: indexPath.row)
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "UserListTableViewCell") as? UserListTableViewCell
-        cell?.userIdLabel.text = self.viewModel.users(row: indexPath.row).userId.description
-        cell?.nameLabel.text = self.viewModel.users(row: indexPath.row).name
-        cell?.commentLabel.text = self.viewModel.users(row: indexPath.row).commnet
+        cell?.initialize(model: .init(userNo: user.userId, name: user.name, comment: user.commnet))
         return cell!
     }
     
