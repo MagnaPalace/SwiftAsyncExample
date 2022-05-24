@@ -56,12 +56,26 @@ class AddUserViewController: UIViewController {
         IndicatorView.shared.startIndicator()
         
         // 通常版リクエスト
-        api.request(param: parameter as [String : Any], url: url) { (success, result, error) in
-            guard success else {
+//        api.request(param: parameter as [String : Any], url: url) { (success, result, error) in
+//            guard success else {
+//                IndicatorView.shared.stopIndicator()
+//                let alert = UIAlertController(title: "エラー", message: "ユーザーの追加に失敗しました。", preferredStyle: .alert)
+//                alert.addAction(UIAlertAction(title: "閉じる", style: .cancel, handler: nil))
+//                self.present(alert, animated: true, completion: nil)
+//                return
+//            }
+//            IndicatorView.shared.stopIndicator()
+//            self.delegate.didEndSaveUserAction()
+//            DispatchQueue.main.async{
+//                self.navigationController?.popViewController(animated: true)
+//            }
+//        }
+        
+        // Swift 5.5 Concurrency async/await
+        Task {
+            let result = try await api.requestAsync(param: parameter as [String : Any], url: url)
+            guard result != nil else {
                 IndicatorView.shared.stopIndicator()
-                let alert = UIAlertController(title: "エラー", message: "ユーザーの追加に失敗しました。", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "閉じる", style: .cancel, handler: nil))
-                self.present(alert, animated: true, completion: nil)
                 return
             }
             IndicatorView.shared.stopIndicator()

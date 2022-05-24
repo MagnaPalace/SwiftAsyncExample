@@ -45,6 +45,13 @@ class ApiManager {
     func requestAsync(param: [String: Any]?, url: URL) async throws -> Any? {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "content-type")
+        
+        if param != nil {
+            let postBody = try? JSONSerialization.data(withJSONObject: param as Any, options: [])
+            request.httpBody = postBody
+        }
+        
         do {
             print("-----url-----\n\(url)")
             print("-----param-----\n\(String(describing: param))")
