@@ -14,9 +14,13 @@ class ApiManager {
     func request(param: [String: Any]?, url: URL, completion: @escaping (_ success: Bool, _ result: Any?, _ error: NSError?) -> ()) {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "content-type")
         
         print("-----url-----\n\(url)")
         print("-----param-----\n\(String(describing: param))")
+        
+        guard let postBody = try? JSONSerialization.data(withJSONObject: param as Any, options: []) else { return }
+        request.httpBody = postBody
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data else { return }

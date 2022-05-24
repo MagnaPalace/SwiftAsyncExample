@@ -19,7 +19,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="eSM-ns-sWR">
                                 <rect key="frame" x="20" y="60" width="374" height="254"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User No" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IG0-pO-yXK">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IG0-pO-yXK">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="textColor"/>
@@ -87,7 +87,7 @@
                     <connections>
                         <outlet property="commentTextField" destination="nx1-Mq-V1t" id="Zda-bS-nx9"/>
                         <outlet property="nameTextField" destination="ikE-O1-lEG" id="5Mm-rH-quN"/>
-                        <outlet property="userNoTextField" destination="n90-4j-72m" id="Vrd-Kn-JEt"/>
+                        <outlet property="userIdTextField" destination="n90-4j-72m" id="myr-nv-1Dv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

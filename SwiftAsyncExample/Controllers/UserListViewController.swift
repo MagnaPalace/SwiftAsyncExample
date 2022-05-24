@@ -35,6 +35,7 @@ class ViewController: UIViewController {
     @objc func addBarButtonTapped(_ sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: "AddUserViewController", bundle: nil)
         let addUserViewController = storyboard.instantiateViewController(withIdentifier: "AddUserViewController") as! AddUserViewController
+        addUserViewController.initialize(delegate: self)
         self.navigationController?.pushViewController(addUserViewController, animated: true)
     }
 
@@ -65,6 +66,14 @@ extension ViewController: UserListViewModelDelegate {
         DispatchQueue.main.async{
             self.tableView.reloadData()
         }
+    }
+    
+}
+
+extension ViewController: AddUserViewControllerDelegate {
+    
+    func didEndSaveUserAction() {
+        self.viewModel.fetchUsers()
     }
     
 }
