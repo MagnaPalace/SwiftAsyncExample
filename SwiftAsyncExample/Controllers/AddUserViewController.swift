@@ -13,11 +13,7 @@ class AddUserViewController: UIViewController {
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var commentTextField: UITextField!
     
-    var delegate: AddUserViewControllerDelegate!
-    
-    func initialize(delegate: AddUserViewControllerDelegate) {
-        self.delegate = delegate
-    }
+    weak var delegate: AddUserViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +39,6 @@ class AddUserViewController: UIViewController {
     }
     
     private func addUserAction() {
-        // TODO: ユーザー保存
         let api = ApiManager()
         let url = URL(string: BASE_URL + API_URL + UserApi.store.rawValue)!
         
@@ -79,7 +74,7 @@ class AddUserViewController: UIViewController {
                 return
             }
             IndicatorView.shared.stopIndicator()
-            self.delegate.didEndSaveUserAction()
+            self.delegate?.didEndSaveUserAction()
             DispatchQueue.main.async{
                 self.navigationController?.popViewController(animated: true)
             }
@@ -111,6 +106,6 @@ extension AddUserViewController: UITextFieldDelegate {
     
 }
 
-protocol AddUserViewControllerDelegate {
+protocol AddUserViewControllerDelegate: AnyObject {
     func didEndSaveUserAction()
 }

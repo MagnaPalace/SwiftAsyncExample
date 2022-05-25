@@ -11,11 +11,7 @@ import UIKit
 class UserListViewModel {
     
     private var users: [User] = []
-    let delegate: UserListViewModelDelegate
-    
-    init(delegate: UserListViewModelDelegate) {
-        self.delegate = delegate
-    }
+    weak var delegate: UserListViewModelDelegate?
     
     /// ユーザーの全取得
     func fetchUsers() {
@@ -43,7 +39,7 @@ class UserListViewModel {
             }
             IndicatorView.shared.stopIndicator()
             self.users = json.map { User.fromJson(user: $0) }
-            self.delegate.dataUpdated()
+            self.delegate?.dataUpdated()
         }
         
     }
@@ -58,6 +54,6 @@ class UserListViewModel {
     
 }
 
-protocol UserListViewModelDelegate {
+protocol UserListViewModelDelegate: AnyObject {
     func dataUpdated()
 }

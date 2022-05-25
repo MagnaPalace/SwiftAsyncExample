@@ -11,8 +11,8 @@ class ViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
     
-    var viewModel: UserListViewModel!
-    
+    var viewModel: UserListViewModel?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -22,8 +22,9 @@ class ViewController: UIViewController {
         
         self.setNavigationBar()
         
-        self.viewModel = UserListViewModel(delegate: self)
-        self.viewModel.fetchUsers()
+        self.viewModel = UserListViewModel()
+        self.viewModel?.delegate = self
+        self.viewModel?.fetchUsers()
     }
     
     private func setNavigationBar() {
@@ -35,7 +36,8 @@ class ViewController: UIViewController {
     @objc func addBarButtonTapped(_ sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: "AddUserViewController", bundle: nil)
         let addUserViewController = storyboard.instantiateViewController(withIdentifier: "AddUserViewController") as! AddUserViewController
-        addUserViewController.initialize(delegate: self)
+        addUserViewController.delegate = self
+//        addUserViewController.initialize(delegate: self)
         self.navigationController?.pushViewController(addUserViewController, animated: true)
     }
 
@@ -48,13 +50,13 @@ extension ViewController: UITableViewDelegate {
 extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel.usersCount()
+        return self.viewModel?.usersCount() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let user = self.viewModel.users(row: indexPath.row)
+        let user = self.viewModel?.users(row: indexPath.row)
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "UserListTableViewCell") as? UserListTableViewCell
-        cell?.initialize(model: .init(userNo: user.userId, name: user.name, comment: user.commnet))
+        cell?.initialize(model: .init(userNo: user?.userId ?? 0, name: user?.name ?? "", comment: user?.commnet ?? ""))
         return cell!
     }
     
@@ -73,7 +75,7 @@ extension ViewController: UserListViewModelDelegate {
 extension ViewController: AddUserViewControllerDelegate {
     
     func didEndSaveUserAction() {
-        self.viewModel.fetchUsers()
+        self.viewModel?.fetchUsers()
     }
     
 }
