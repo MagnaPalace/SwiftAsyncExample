@@ -52,31 +52,21 @@ class ApiManager {
             request.httpBody = postBody
         }
         
-        do {
-            print("-----url-----\n\(url)")
-            print("-----param-----\n\(String(describing: param))")
-            let (data, urlResponse) = try await URLSession.shared.data(for: request, delegate: nil)
-            
-            guard let httpStatus = urlResponse as? HTTPURLResponse else {
-                return nil
-            }
-            print("statusCode: \(httpStatus.statusCode)")
-            guard httpStatus.statusCode == 200 else {
-                return nil
-            }
-            
-            do {
-                let result = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                print("-----result-----\n\(result)")
-                return result
-            } catch {
-                print(error)
-                return nil
-            }
-        } catch {
-            print(error)
+        print("-----url-----\n\(url)")
+        print("-----param-----\n\(String(describing: param))")
+        let (data, urlResponse) = try await URLSession.shared.data(for: request, delegate: nil)
+        
+        guard let httpStatus = urlResponse as? HTTPURLResponse else {
             return nil
         }
+        print("statusCode: \(httpStatus.statusCode)")
+        guard httpStatus.statusCode == 200 else {
+            return nil
+        }
+        
+        let result = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+        print("-----result-----\n\(result)")
+        return result
     }
     
 }

@@ -9,9 +9,9 @@ import Foundation
 
 class User {
     
-    var userId: Int
-    var name: String
-    var commnet: String
+    private(set) var userId: Int
+    private(set) var name: String
+    private(set) var comment: String
     
     typealias Json = Dictionary<String, Any?>
     
@@ -22,7 +22,7 @@ class User {
     ) {
         self.userId = userId
         self.name = name
-        self.commnet = comment
+        self.comment = comment
     }
     
     static func fromJson(user: Json) -> User {

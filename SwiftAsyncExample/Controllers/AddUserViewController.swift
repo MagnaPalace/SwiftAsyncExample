@@ -19,7 +19,7 @@ class AddUserViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.title = "ユーザー追加"
+        self.title = "addUserViewTitle".localized
         
         userIdTextField.delegate = self
         nameTextField.delegate = self
@@ -30,9 +30,7 @@ class AddUserViewController: UIViewController {
 
     @IBAction func addUserButtonTapped(_ sender: Any) {
         guard userIdTextField.text?.count ?? 0 > 0, nameTextField.text?.count ?? 0 > 0, commentTextField.text?.count ?? 0 > 0 else {
-            let alert = UIAlertController(title: "確認", message: "入力が完了していない箇所があります。", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "閉じる", style: .cancel, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            self.notCompletedInputFieldAlert()
             return
         }
         self.addUserAction()
@@ -54,13 +52,11 @@ class AddUserViewController: UIViewController {
 //        api.request(param: parameter as [String : Any], url: url) { (success, result, error) in
 //            guard success else {
 //                IndicatorView.shared.stopIndicator()
-//                let alert = UIAlertController(title: "エラー", message: "ユーザーの追加に失敗しました。", preferredStyle: .alert)
-//                alert.addAction(UIAlertAction(title: "閉じる", style: .cancel, handler: nil))
-//                self.present(alert, animated: true, completion: nil)
+//                self.addUserFailedAlert()
 //                return
 //            }
 //            IndicatorView.shared.stopIndicator()
-//            self.delegate.didEndSaveUserAction()
+//            self.delegate?.didEndSaveUserAction()
 //            DispatchQueue.main.async{
 //                self.navigationController?.popViewController(animated: true)
 //            }
@@ -68,15 +64,22 @@ class AddUserViewController: UIViewController {
         
         // Swift 5.5 Concurrency async/await
         Task {
-            let result = try await api.requestAsync(param: parameter as [String : Any], url: url)
-            guard result != nil else {
+            do {
+                let result = try await api.requestAsync(param: parameter as [String : Any], url: url)
+                guard result != nil else {
+                    IndicatorView.shared.stopIndicator()
+                    self.addUserFailedAlert()
+                    return
+                }
                 IndicatorView.shared.stopIndicator()
-                return
-            }
-            IndicatorView.shared.stopIndicator()
-            self.delegate?.didEndSaveUserAction()
-            DispatchQueue.main.async{
-                self.navigationController?.popViewController(animated: true)
+                self.delegate?.didEndSaveUserAction()
+                DispatchQueue.main.async{
+                    self.navigationController?.popViewController(animated: true)
+                }
+            } catch {
+                IndicatorView.shared.stopIndicator()
+                print(error.localizedDescription)
+                self.storeUserApiFailedAlert()
             }
         }
     }
@@ -94,6 +97,24 @@ class AddUserViewController: UIViewController {
     
     @objc func doneButtonTapped(_ sender: UIBarButtonItem) {
         userIdTextField.resignFirstResponder()
+    }
+    
+    private func storeUserApiFailedAlert() {
+        let alert = UIAlertController(title: "errorAlertTitle".localized, message: "networkCommunicationFailedMessage".localized, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "closeAlertButtonTitle".localized, style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func addUserFailedAlert() {
+        let alert = UIAlertController(title: "errorAlertTitle".localized, message: "addUserFailedMessage".localized, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "closeAlertButtonTitle".localized, style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func notCompletedInputFieldAlert() {
+        let alert = UIAlertController(title: "confirmAlertTitle".localized, message: "notCompletedInputFieldMessage".localized, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "closeAlertButtonTitle".localized, style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
 }
