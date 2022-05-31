@@ -76,6 +76,10 @@ class AddUserViewController: UIViewController {
                 DispatchQueue.main.async{
                     self.navigationController?.popViewController(animated: true)
                 }
+            } catch let error as ApiManager.APIError {
+                IndicatorView.shared.stopIndicator()
+                print("\(error.statusCode) : \(error.message)")
+                self.storeUserApiFailedAlert()
             } catch {
                 IndicatorView.shared.stopIndicator()
                 print(error.localizedDescription)

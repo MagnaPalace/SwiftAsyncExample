@@ -6,9 +6,17 @@
 //
 
 import Foundation
-//import _Concurrency
 
 class ApiManager {
+    
+    /// APIエラー構造体
+    struct APIError: Error {
+        /// ステータスコード
+        private (set) var statusCode: Int
+        
+        /// エラーメッセージ
+        private (set) var message: String
+    }
     
     /// 通常版
     func request(param: [String: Any]?, url: URL, completion: @escaping (_ success: Bool, _ result: Any?, _ error: NSError?) -> ()) {
@@ -61,7 +69,7 @@ class ApiManager {
         }
         print("statusCode: \(httpStatus.statusCode)")
         guard httpStatus.statusCode == 200 else {
-            return nil
+            throw APIError(statusCode: httpStatus.statusCode, message: "\(HTTPURLResponse.localizedString(forStatusCode: httpStatus.statusCode))")
         }
         
         let result = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
