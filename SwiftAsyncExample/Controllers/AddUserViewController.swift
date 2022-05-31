@@ -19,7 +19,7 @@ class AddUserViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.title = "addUserViewTitle".localized
+        self.title = String.Localize.addUserViewTitle.text
         
         userIdTextField.delegate = self
         nameTextField.delegate = self
@@ -100,20 +100,20 @@ class AddUserViewController: UIViewController {
     }
     
     private func storeUserApiFailedAlert() {
-        let alert = UIAlertController(title: "errorAlertTitle".localized, message: "networkCommunicationFailedMessage".localized, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "closeAlertButtonTitle".localized, style: .cancel, handler: nil))
+        let alert = UIAlertController(title: String.Localize.errorAlertTitle.text, message: String.Localize.networkCommunicationFailedMessage.text, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: String.Localize.closeAlertButtonTitle.text, style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     
     private func addUserFailedAlert() {
-        let alert = UIAlertController(title: "errorAlertTitle".localized, message: "addUserFailedMessage".localized, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "closeAlertButtonTitle".localized, style: .cancel, handler: nil))
+        let alert = UIAlertController(title: String.Localize.errorAlertTitle.text, message: String.Localize.addUserFailedMessage.text, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: String.Localize.closeAlertButtonTitle.text, style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     
     private func notCompletedInputFieldAlert() {
-        let alert = UIAlertController(title: "confirmAlertTitle".localized, message: "notCompletedInputFieldMessage".localized, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "closeAlertButtonTitle".localized, style: .cancel, handler: nil))
+        let alert = UIAlertController(title: String.Localize.confirmAlertTitle.text, message: String.Localize.notCompletedInputFieldMessage.text, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: String.Localize.closeAlertButtonTitle.text, style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     

@@ -70,8 +70,8 @@ extension ViewController: UserListViewModelDelegate {
     
     func getUsersApiFailed() {
         DispatchQueue.main.async{
-            let alert = UIAlertController(title: "errorAlertTitle".localized, message: "networkCommunicationFailedMessage".localized, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "closeAlertButtonTitle".localized, style: .cancel, handler: nil))
+            let alert = UIAlertController(title: String.Localize.errorAlertTitle.text, message: String.Localize.networkCommunicationFailedMessage.text, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: String.Localize.closeAlertButtonTitle.text, style: .cancel, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
     }
