@@ -66,17 +66,13 @@ class AddUserViewController: UIViewController {
         Task {
             do {
                 let result = try await api.requestAsync(param: parameter as [String : Any], url: url)
-                guard result != nil else {
-                    IndicatorView.shared.stopIndicator()
-                    self.addUserFailedAlert()
-                    return
-                }
+                print(result)
                 IndicatorView.shared.stopIndicator()
                 self.delegate?.didEndSaveUserAction()
                 DispatchQueue.main.async{
                     self.navigationController?.popViewController(animated: true)
                 }
-            } catch let error as ApiManager.APIError {
+            } catch ApiManager.ApiError.httpError(let error) {
                 IndicatorView.shared.stopIndicator()
                 print("\(error.statusCode) : \(error.message)")
                 self.storeUserApiFailedAlert()

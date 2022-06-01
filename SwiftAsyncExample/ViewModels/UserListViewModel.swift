@@ -41,7 +41,7 @@ class UserListViewModel {
                 IndicatorView.shared.stopIndicator()
                 self.users = json.map { User.fromJson(user: $0) }
                 self.delegate?.dataUpdated()
-            } catch let error as ApiManager.APIError {
+            } catch ApiManager.ApiError.httpError(let error) {
                 IndicatorView.shared.stopIndicator()
                 print("\(error.statusCode) : \(error.message)")
                 self.delegate?.getUsersApiFailed()

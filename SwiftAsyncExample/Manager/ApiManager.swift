@@ -10,12 +10,18 @@ import Foundation
 class ApiManager {
     
     /// APIエラー構造体
-    struct APIError: Error {
+    struct HttpResponseError: Error {
         /// ステータスコード
         private (set) var statusCode: Int
         
         /// エラーメッセージ
         private (set) var message: String
+    }
+    
+    /// APIエラー
+    enum ApiError: Error {
+        case noResponse
+        case httpError(HttpResponseError)
     }
     
     /// 通常版
@@ -50,7 +56,7 @@ class ApiManager {
     }
     
     /// Swift 5.5 Concurrency async/await
-    func requestAsync(param: [String: Any]?, url: URL) async throws -> Any? {
+    func requestAsync(param: [String: Any]?, url: URL) async throws -> Any {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "content-type")
@@ -65,11 +71,11 @@ class ApiManager {
         let (data, urlResponse) = try await URLSession.shared.data(for: request, delegate: nil)
         
         guard let httpStatus = urlResponse as? HTTPURLResponse else {
-            return nil
+            throw ApiError.noResponse
         }
         print("statusCode: \(httpStatus.statusCode)")
         guard httpStatus.statusCode == 200 else {
-            throw APIError(statusCode: httpStatus.statusCode, message: "\(HTTPURLResponse.localizedString(forStatusCode: httpStatus.statusCode))")
+            throw ApiError.httpError(HttpResponseError(statusCode: httpStatus.statusCode, message: "\(HTTPURLResponse.localizedString(forStatusCode: httpStatus.statusCode))"))
         }
         
         let result = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
