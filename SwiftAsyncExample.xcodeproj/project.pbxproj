@@ -22,6 +22,7 @@
 		AE884F79283BA3EE005C195F /* AddUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE884F78283BA3EE005C195F /* AddUserViewController.swift */; };
 		AE884F7B283BA3FF005C195F /* AddUserViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE884F7A283BA3FF005C195F /* AddUserViewController.storyboard */; };
 		AE884F7D283C4EB4005C195F /* UserListTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE884F7C283C4EB4005C195F /* UserListTableViewCellModel.swift */; };
+		AEDFF67A28482C8800FFAA9D /* AddUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDFF67928482C8800FFAA9D /* AddUserViewModel.swift */; };
 		AEEAD5AE283F9A0D00F197AF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AEEAD5B0283F9A0D00F197AF /* Localizable.strings */; };
 		AEEAD5B4283F9C8400F197AF /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEAD5B3283F9C8400F197AF /* StringExtension.swift */; };
 /* End PBXBuildFile section */
@@ -44,6 +45,7 @@
 		AE884F78283BA3EE005C195F /* AddUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewController.swift; sourceTree = "<group>"; };
 		AE884F7A283BA3FF005C195F /* AddUserViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddUserViewController.storyboard; sourceTree = "<group>"; };
 		AE884F7C283C4EB4005C195F /* UserListTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListTableViewCellModel.swift; sourceTree = "<group>"; };
+		AEDFF67928482C8800FFAA9D /* AddUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewModel.swift; sourceTree = "<group>"; };
 		AEEAD5B1283F9A4900F197AF /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AEEAD5B3283F9C8400F197AF /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		AEEAD5B6283F9D8000F197AF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				AE884F74283997DE005C195F /* UserListViewModel.swift */,
+				AEDFF67928482C8800FFAA9D /* AddUserViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 			files = (
 				AE884F672838A5A4005C195F /* UserListTableViewCell.swift in Sources */,
 				AE884F75283997DE005C195F /* UserListViewModel.swift in Sources */,
+				AEDFF67A28482C8800FFAA9D /* AddUserViewModel.swift in Sources */,
 				AE884F5728388B3B005C195F /* UserListViewController.swift in Sources */,
 				AE884F5328388B3B005C195F /* AppDelegate.swift in Sources */,
 				AE884F7D283C4EB4005C195F /* UserListTableViewCellModel.swift in Sources */,

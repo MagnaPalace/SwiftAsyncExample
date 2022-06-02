@@ -80,7 +80,7 @@ extension ViewController: UserListViewModelDelegate {
 
 extension ViewController: AddUserViewControllerDelegate {
     
-    func didEndSaveUserAction() {
+    func didEndAddUser() {
         self.viewModel.fetchUsers()
     }
     

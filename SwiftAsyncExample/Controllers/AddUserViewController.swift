@@ -15,6 +15,8 @@ class AddUserViewController: UIViewController {
     
     weak var delegate: AddUserViewControllerDelegate?
     
+    private let viewModel =  AddUserViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,6 +28,8 @@ class AddUserViewController: UIViewController {
         commentTextField.delegate = self
         
         self.setNumberKeyboardDoneButton()
+        
+        self.viewModel.delegate = self
     }
 
     @IBAction func addUserButtonTapped(_ sender: Any) {
@@ -33,55 +37,7 @@ class AddUserViewController: UIViewController {
             self.notCompletedInputFieldAlert()
             return
         }
-        self.addUserAction()
-    }
-    
-    private func addUserAction() {
-        let api = ApiManager()
-        let url = URL(string: BASE_URL + API_URL + UserApi.store.rawValue)!
-        
-        let parameter = [
-            User.Key.userId.rawValue: userIdTextField.text,
-            User.Key.name.rawValue: nameTextField.text,
-            User.Key.comment.rawValue: commentTextField.text,
-        ]
-
-        IndicatorView.shared.startIndicator()
-        
-        // 通常版リクエスト
-//        api.request(param: parameter as [String : Any], url: url) { (success, result, error) in
-//            guard success else {
-//                IndicatorView.shared.stopIndicator()
-//                self.addUserFailedAlert()
-//                return
-//            }
-//            IndicatorView.shared.stopIndicator()
-//            self.delegate?.didEndSaveUserAction()
-//            DispatchQueue.main.async{
-//                self.navigationController?.popViewController(animated: true)
-//            }
-//        }
-        
-        // Swift 5.5 Concurrency async/await
-        Task {
-            do {
-                let result = try await api.requestAsync(param: parameter as [String : Any], url: url)
-                print(result)
-                IndicatorView.shared.stopIndicator()
-                self.delegate?.didEndSaveUserAction()
-                DispatchQueue.main.async{
-                    self.navigationController?.popViewController(animated: true)
-                }
-            } catch ApiManager.ApiError.httpError(let error) {
-                IndicatorView.shared.stopIndicator()
-                print("\(error.statusCode) : \(error.message)")
-                self.storeUserApiFailedAlert()
-            } catch {
-                IndicatorView.shared.stopIndicator()
-                print(error.localizedDescription)
-                self.storeUserApiFailedAlert()
-            }
-        }
+        self.viewModel.addUser(userId: userIdTextField.text!, name: nameTextField.text!, comment: commentTextField.text!)
     }
     
     /// ナンバーキーボードに完了ボタン追加
@@ -127,6 +83,21 @@ extension AddUserViewController: UITextFieldDelegate {
     
 }
 
+extension AddUserViewController: AddUserViewModelDelegate {
+    
+    func didSuccessAddUserApi() {
+        DispatchQueue.main.async{
+            self.navigationController?.popViewController(animated: true)
+        }
+        self.delegate?.didEndAddUser()
+    }
+    
+    func addUserApiFailed() {
+        self.addUserFailedAlert()
+    }
+    
+}
+
 protocol AddUserViewControllerDelegate: AnyObject {
-    func didEndSaveUserAction()
+    func didEndAddUser()
 }
